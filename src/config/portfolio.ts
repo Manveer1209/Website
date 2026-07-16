@@ -56,12 +56,12 @@ export const portfolioConfig = {
       previewText: "CTF-3RD"
     },
     {
-      id: "findmyy-hackathon-1",
-      title: "2nd Place - findmyy's 1st Hackathon",
-      issuer: "findmyy & Youthub",
-      date: "2026",
+      id: "finomyy-eduthon-2025",
+      title: "2nd Place - ShutterSoul (Eduthon 2025)",
+      issuer: "Finomyy & YouVah",
+      date: "2025",
       credentialUrl: "/findmyy-cert.png",
-      previewText: "HACK-2ND"
+      previewText: "SHUTTER"
     }
   ],
   contact: {
