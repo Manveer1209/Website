@@ -57,7 +57,7 @@ export const portfolioConfig = {
     },
     {
       id: "finomyy-eduthon-2025",
-      title: "2nd Place - ShutterSoul (Eduthon 2025)",
+      title: "2nd Place - finomyy by YouVah",
       issuer: "Finomyy & YouVah",
       date: "2025",
       credentialUrl: "/findmyy-cert.png",
