@@ -48,20 +48,20 @@ export const portfolioConfig = {
   ],
   certifications: [
     {
-      id: "cert-placeholder-1",
-      title: "Professional Python Developer",
-      issuer: "Python Institute (Example)",
-      date: "Expected 2026",
-      credentialUrl: "#",
-      previewText: "PY-CORE"
+      id: "kryptix-26",
+      title: "3rd Place - KRYPTIX '26 Capture The Flag",
+      issuer: "Kryptix (Mundus Obscurus) & Krypton",
+      date: "May 2026",
+      credentialUrl: "/kryptix-cert.png",
+      previewText: "CTF-3RD"
     },
     {
-      id: "cert-placeholder-2",
-      title: "Linux System Administration",
-      issuer: "Linux Foundation (Example)",
-      date: "Expected 2026",
-      credentialUrl: "#",
-      previewText: "LFS-201"
+      id: "findmyy-hackathon-1",
+      title: "2nd Place - findmyy's 1st Hackathon",
+      issuer: "findmyy & Youthub",
+      date: "2026",
+      credentialUrl: "/findmyy-cert.png",
+      previewText: "HACK-2ND"
     }
   ],
   contact: {

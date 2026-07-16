@@ -18,13 +18,23 @@ export default function CertificationsSection() {
           transition={{ duration: 0.4, delay: idx * 0.1 }}
           className="border border-white/[0.06] bg-white/[0.01] rounded-lg p-5 flex items-start gap-4 hover:border-violet-400/20 transition-all duration-300 accent-glow-box-hover"
         >
-          {/* Certificate Badge Preview Mockup */}
-          <div className="w-16 h-16 shrink-0 rounded border border-white/[0.08] bg-black flex flex-col items-center justify-center relative select-none">
-            <div className="absolute top-1 left-1 w-1 h-1 rounded-full bg-violet-400/30" />
-            <Award size={18} className="text-violet-400 mb-1" />
-            <span className="text-[7px] text-gray-500 font-bold uppercase tracking-wider">
-              {cert.previewText}
-            </span>
+          {/* Certificate Badge Preview Mockup / Thumbnail */}
+          <div className="w-16 h-16 shrink-0 rounded border border-white/[0.08] bg-black flex flex-col items-center justify-center relative select-none overflow-hidden">
+            {cert.credentialUrl && cert.credentialUrl.endsWith(".png") ? (
+              <img
+                src={cert.credentialUrl}
+                alt={cert.title}
+                className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity"
+              />
+            ) : (
+              <>
+                <div className="absolute top-1 left-1 w-1 h-1 rounded-full bg-violet-400/30" />
+                <Award size={18} className="text-violet-400 mb-1" />
+                <span className="text-[7px] text-gray-500 font-bold uppercase tracking-wider">
+                  {cert.previewText}
+                </span>
+              </>
+            )}
           </div>
 
           {/* Certificate Details */}
