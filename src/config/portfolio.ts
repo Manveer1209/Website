@@ -8,6 +8,7 @@ export const portfolioConfig = {
     "Student"
   ],
   githubUsername: "Manveer1209", // Connects client-side GitHub statistics
+  githubRepoName: "Website", // The repository name of this website
   githubToken: process.env.NEXT_PUBLIC_GITHUB_TOKEN || "", // Optional Personal Access Token for rate limits
   about: {
     name: "Keshav Uppal",

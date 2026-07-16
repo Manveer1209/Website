@@ -28,6 +28,7 @@ interface GitHubRepo {
 export default function GithubSection() {
   const [profile, setProfile] = useState<GitHubProfile | null>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [commitsCount, setCommitsCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<"no-username" | "rate-limit" | null>(null);
 
@@ -66,8 +67,36 @@ export default function GithubSection() {
         const profileData = await profileRes.json();
         const reposData = await reposRes.json();
 
+        // Fetch commits count of the portfolio website repository
+        const repoName = portfolioConfig.githubRepoName || "Website";
+        let commitsCountVal: number | null = null;
+        try {
+          const commitsRes = await fetch(
+            `https://api.github.com/repos/${username}/${repoName}/commits?per_page=1`,
+            { headers }
+          );
+          if (commitsRes.ok) {
+            const linkHeader = commitsRes.headers.get("Link") || commitsRes.headers.get("link");
+            if (linkHeader) {
+              const match = linkHeader.match(/[?&]page=(\d+)>;\s*rel="last"/);
+              if (match) {
+                commitsCountVal = parseInt(match[1], 10);
+              } else {
+                const commitsData = await commitsRes.json();
+                commitsCountVal = Array.isArray(commitsData) ? commitsData.length : 1;
+              }
+            } else {
+              const commitsData = await commitsRes.json();
+              commitsCountVal = Array.isArray(commitsData) ? commitsData.length : 0;
+            }
+          }
+        } catch (commitErr) {
+          console.error("Error fetching commits count:", commitErr);
+        }
+
         setProfile(profileData);
         setRepos(reposData);
+        setCommitsCount(commitsCountVal);
         setError(null);
       } catch (err) {
         console.error("Error fetching GitHub statistics", err);
@@ -163,6 +192,12 @@ export default function GithubSection() {
                 <span className="text-gray-600 block uppercase font-bold text-[8px] mb-0.5 select-none">Followers</span>
                 <span className="text-white font-bold text-sm select-text">{profile?.followers}</span>
               </div>
+              {commitsCount !== null && (
+                <div>
+                  <span className="text-gray-600 block uppercase font-bold text-[8px] mb-0.5 select-none">Website Commits</span>
+                  <span className="text-white font-bold text-sm select-text">{commitsCount}</span>
+                </div>
+              )}
             </div>
           </div>
 
