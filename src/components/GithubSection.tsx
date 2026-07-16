@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { GitBranch, GitFork, Loader2, Star, User } from "lucide-react";
 import { GithubIcon as Github } from "@/components/icons";
@@ -29,16 +30,14 @@ export default function GithubSection() {
   const [profile, setProfile] = useState<GitHubProfile | null>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [commitsCount, setCommitsCount] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<"no-username" | "rate-limit" | null>(null);
+  const [loading, setLoading] = useState(() => !!portfolioConfig.githubUsername);
+  const [error, setError] = useState<"no-username" | "rate-limit" | null>(() => 
+    portfolioConfig.githubUsername ? null : "no-username"
+  );
 
   useEffect(() => {
     const username = portfolioConfig.githubUsername;
-    if (!username) {
-      setError("no-username");
-      setLoading(false);
-      return;
-    }
+    if (!username) return;
 
     const fetchGitHubData = async () => {
       try {
@@ -155,12 +154,15 @@ export default function GithubSection() {
           <div className="border border-white/[0.06] bg-white/[0.01] rounded-lg p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3.5">
               {profile?.avatar_url ? (
-                <img
-                  src={profile.avatar_url}
-                  alt={profile.login}
-                  className="w-12 h-12 rounded-full border border-white/[0.08] pointer-events-none"
-                  loading="lazy"
-                />
+                <div className="w-12 h-12 relative shrink-0">
+                  <Image
+                    src={profile.avatar_url}
+                    alt={profile.login}
+                    fill
+                    sizes="48px"
+                    className="rounded-full border border-white/[0.08] pointer-events-none object-cover"
+                  />
+                </div>
               ) : (
                 <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400">
                   <User size={18} />

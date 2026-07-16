@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { portfolioConfig } from "@/config/portfolio";
 
@@ -20,7 +20,7 @@ export default function TerminalCard({
   const data = portfolioConfig.about;
 
   // Typing effect for commands
-  const typeCommand = (cmd: string, onDone: () => void) => {
+  const typeCommand = useCallback((cmd: string, onDone: () => void) => {
     setIsTyping(true);
     setCommandText("");
     setShowOutput(false);
@@ -38,13 +38,16 @@ export default function TerminalCard({
         }, 200);
       }
     }, 70);
-  };
+  }, []);
 
   useEffect(() => {
     if (isInView && currentMode === "whoami") {
-      typeCommand("whoami", () => {});
+      const timer = setTimeout(() => {
+        typeCommand("whoami", () => {});
+      }, 0);
+      return () => clearTimeout(timer);
     }
-  }, [isInView]);
+  }, [isInView, currentMode, typeCommand]);
 
   const handleShortcutClick = (sectionId: string) => {
     if (sectionId === "clear") {

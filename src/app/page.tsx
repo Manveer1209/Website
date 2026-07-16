@@ -17,16 +17,18 @@ import EasterEggs from "@/components/EasterEggs";
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isBooting, setIsBooting] = useState(true);
-  const [showNeofetchEgg, setShowNeofetchEgg] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    
-    // Fast check for session storage to bypass booting screen immediately if already booted
-    const hasBooted = sessionStorage.getItem("portfolio_booted");
-    if (hasBooted === "true") {
-      setIsBooting(false);
-    }
+    // Defer state updates to avoid synchronous cascading renders during hydration
+    const timer = setTimeout(() => {
+      setMounted(true);
+      const hasBooted = sessionStorage.getItem("portfolio_booted");
+      if (hasBooted === "true") {
+        setIsBooting(false);
+      }
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
   if (!mounted) {

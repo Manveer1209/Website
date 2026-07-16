@@ -44,7 +44,7 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="text-gray-400 text-xs md:text-sm tracking-widest uppercase mb-4"
         >
-          Hello, I'm
+          Hello, I&apos;m
         </motion.p>
 
         <motion.h1

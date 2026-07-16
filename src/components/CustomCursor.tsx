@@ -26,24 +26,32 @@ export default function CustomCursor() {
   const ringY = useSpring(mouseY, ringConfig);
 
   useEffect(() => {
-    // Check touch capabilities
     const isTouch = 
       typeof window !== "undefined" && 
       ("ontouchstart" in window || navigator.maxTouchPoints > 0);
-    setIsTouchDevice(isTouch);
+    
+    const mediaQuery = typeof window !== "undefined" ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
 
-    // Check reduced motion
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mediaQuery.matches);
+    // Defer state updates to avoid synchronous cascading renders during hydration
+    const timer = setTimeout(() => {
+      setIsTouchDevice(isTouch);
+      if (mediaQuery) {
+        setReducedMotion(mediaQuery.matches);
+      }
+    }, 0);
 
-    if (isTouch) return;
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
 
     // Track mouse coordinates
     const moveCursor = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
       
-      if (!isVisible) setIsVisible(true);
+      setIsVisible((prev) => (prev ? prev : true));
 
       // Check what element we are hovering over
       const target = e.target as HTMLElement;
@@ -110,7 +118,7 @@ export default function CustomCursor() {
       document.removeEventListener("mouseenter", handleMouseEnter);
       clearTimeout(scrollTimeout);
     };
-  }, [mouseX, mouseY, isVisible]);
+  }, [isTouchDevice, mouseX, mouseY]);
 
   // Don't render custom cursor on touch devices or if reduced motion is requested
   if (isTouchDevice || reducedMotion) return null;

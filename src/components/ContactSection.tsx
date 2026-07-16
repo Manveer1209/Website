@@ -51,7 +51,7 @@ export default function ContactSection() {
       <div className="border border-white/[0.06] bg-white/[0.01] rounded-lg p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 accent-glow-box">
         {/* Pitch Statement */}
         <div className="max-w-xs space-y-2 text-center md:text-left select-none">
-          <h4 className="text-white font-bold text-sm tracking-wide">Let's Connect</h4>
+          <h4 className="text-white font-bold text-sm tracking-wide">Let&apos;s Connect</h4>
           <p className="text-gray-400 text-xs leading-relaxed">
             Interested in system administration, backend development, or open-source collaboration? Reach out.
           </p>

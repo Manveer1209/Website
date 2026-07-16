@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal, ShieldCheck, X } from "lucide-react";
 import { portfolioConfig } from "@/config/portfolio";
 
 export default function EasterEggs() {
   const [activeEgg, setActiveEgg] = useState<"sudo" | "neofetch" | null>(null);
-  const [typedBuffer, setTypedBuffer] = useState("");
+  const typedBufferRef = useRef("");
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -29,20 +29,16 @@ export default function EasterEggs() {
 
       // Only track single character letters, numbers, and spaces
       if (e.key.length === 1) {
-        setTypedBuffer((prev) => {
-          const next = (prev + e.key.toLowerCase()).slice(-25); // keep last 25 chars
-          
-          if (next.endsWith("sudo hire me")) {
-            setActiveEgg("sudo");
-            return "";
-          }
-          if (next.endsWith("neofetch")) {
-            setActiveEgg("neofetch");
-            return "";
-          }
-          
-          return next;
-        });
+        const next = (typedBufferRef.current + e.key.toLowerCase()).slice(-25);
+        typedBufferRef.current = next;
+
+        if (next.endsWith("sudo hire me")) {
+          setActiveEgg("sudo");
+          typedBufferRef.current = "";
+        } else if (next.endsWith("neofetch")) {
+          setActiveEgg("neofetch");
+          typedBufferRef.current = "";
+        }
       }
     };
 
@@ -98,7 +94,7 @@ export default function EasterEggs() {
                   <div>
                     <div className="font-bold text-violet-400 mb-1">Permission granted.</div>
                     <p className="text-[11px] md:text-xs text-gray-300 leading-normal">
-                      Welcome, superuser. Authentication successful. Keshav Uppal's coordinates are available. Feel free to contact him at <a href={`mailto:${portfolioConfig.contact.email}`} className="text-violet-400 underline hover:text-violet-300 interactive-cursor">{portfolioConfig.contact.email}</a>.
+                      Welcome, superuser. Authentication successful. Keshav Uppal&apos;s coordinates are available. Feel free to contact him at <a href={`mailto:${portfolioConfig.contact.email}`} className="text-violet-400 underline hover:text-violet-300 interactive-cursor">{portfolioConfig.contact.email}</a>.
                     </p>
                   </div>
                 </div>

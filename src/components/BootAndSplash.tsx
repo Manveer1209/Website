@@ -9,17 +9,24 @@ interface BootAndSplashProps {
 
 export default function BootAndSplash({ onComplete }: BootAndSplashProps) {
   const [bootStep, setBootStep] = useState(0);
-  const [stage, setStage] = useState<"boot" | "splash" | "complete">("boot");
-
-  useEffect(() => {
-    // Check if user has already seen the boot screen in this session
+  const [stage, setStage] = useState<"boot" | "splash" | "complete">(() => {
     if (typeof window !== "undefined") {
       const hasBooted = sessionStorage.getItem("portfolio_booted");
       if (hasBooted === "true") {
-        setStage("complete");
-        onComplete();
-        return;
+        return "complete";
       }
+    }
+    return "boot";
+  });
+
+  useEffect(() => {
+    // If we've already booted, notify the parent asynchronously
+    const hasBooted = typeof window !== "undefined" && sessionStorage.getItem("portfolio_booted") === "true";
+    if (hasBooted) {
+      const timer = setTimeout(() => {
+        onComplete();
+      }, 0);
+      return () => clearTimeout(timer);
     }
 
     // Sequence of boot logs

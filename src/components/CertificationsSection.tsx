@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Award, ExternalLink } from "lucide-react";
 import { portfolioConfig } from "@/config/portfolio";
 
@@ -21,10 +22,12 @@ export default function CertificationsSection() {
           {/* Certificate Badge Preview Mockup / Thumbnail */}
           <div className="w-16 h-16 shrink-0 rounded border border-white/[0.08] bg-black flex flex-col items-center justify-center relative select-none overflow-hidden">
             {cert.credentialUrl && cert.credentialUrl.endsWith(".png") ? (
-              <img
+              <Image
                 src={cert.credentialUrl}
                 alt={cert.title}
-                className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity"
+                fill
+                sizes="64px"
+                className="object-cover opacity-85 hover:opacity-100 transition-opacity"
               />
             ) : (
               <>
