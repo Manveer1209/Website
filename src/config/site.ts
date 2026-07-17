@@ -23,7 +23,7 @@ export const siteConfig = {
       "Arch Linux Ricing",
       "System Customization",
       "Photography",
-      "Tech Events"
+      "Graphic Designing",
     ],
     currentlyLearning: [],
     status: "Always learning."
