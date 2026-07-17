@@ -11,7 +11,7 @@ export default function BootAndSplash({ onComplete }: BootAndSplashProps) {
   const [bootStep, setBootStep] = useState(0);
   const [stage, setStage] = useState<"boot" | "splash" | "complete">(() => {
     if (typeof window !== "undefined") {
-      const hasBooted = sessionStorage.getItem("portfolio_booted");
+      const hasBooted = sessionStorage.getItem("site_booted");
       if (hasBooted === "true") {
         return "complete";
       }
@@ -21,7 +21,7 @@ export default function BootAndSplash({ onComplete }: BootAndSplashProps) {
 
   useEffect(() => {
     // If we've already booted, notify the parent asynchronously
-    const hasBooted = typeof window !== "undefined" && sessionStorage.getItem("portfolio_booted") === "true";
+    const hasBooted = typeof window !== "undefined" && sessionStorage.getItem("site_booted") === "true";
     if (hasBooted) {
       const timer = setTimeout(() => {
         onComplete();
@@ -34,7 +34,7 @@ export default function BootAndSplash({ onComplete }: BootAndSplashProps) {
     const timers: NodeJS.Timeout[] = [];
 
     const steps = [
-      { delay: 0 },    // Initializing Portfolio...
+      { delay: 0 },    // Initializing system...
       { delay: 250 },  // Loading modules...
       { delay: 500 },  // Mounting filesystem...
       { delay: 750 },  // Launching interface...
@@ -57,7 +57,7 @@ export default function BootAndSplash({ onComplete }: BootAndSplashProps) {
     const splashTimer = setTimeout(() => {
       setStage("complete");
       if (typeof window !== "undefined") {
-        sessionStorage.setItem("portfolio_booted", "true");
+        sessionStorage.setItem("site_booted", "true");
       }
       onComplete();
     }, 2750); // 1550ms + 1200ms
@@ -85,7 +85,7 @@ export default function BootAndSplash({ onComplete }: BootAndSplashProps) {
             {bootStep >= 1 && (
               <div className="flex gap-2">
                 <span className="text-gray-500">[ 0.000 ]</span>
-                <span>Initializing Portfolio...</span>
+                <span>Initializing system...</span>
               </div>
             )}
             {bootStep >= 2 && (
@@ -123,7 +123,7 @@ export default function BootAndSplash({ onComplete }: BootAndSplashProps) {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="text-base md:text-lg flex items-center justify-center"
           >
-            <span className="text-white">manveer@portfolio:~$</span>
+            <span className="text-white">manveer@arch:~$</span>
             <span className="terminal-cursor" />
           </motion.div>
         )}

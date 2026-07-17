@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import { Folder, Info } from "lucide-react";
 import { GithubIcon as Github } from "@/components/icons";
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 export default function ProjectsSection() {
-  const projects = portfolioConfig.projects;
+  const projects = siteConfig.projects;
 
   return (
     <div className="w-full max-w-3xl mx-auto space-y-8 font-mono">

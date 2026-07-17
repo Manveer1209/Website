@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
@@ -91,7 +91,7 @@ export default function Navbar() {
           className="text-white hover:text-violet-400 font-bold transition-colors select-none interactive-cursor flex items-center gap-1.5"
         >
           <span className="text-violet-400 font-black">&gt;</span>
-          <span>{portfolioConfig.name.toLowerCase()}</span>
+          <span>{siteConfig.name.toLowerCase()}</span>
           <span className="animate-pulse bg-violet-400 w-1.5 h-4 ml-0.5 inline-block align-middle" />
         </a>
 

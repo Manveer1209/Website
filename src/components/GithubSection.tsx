@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { GitBranch, GitFork, Loader2, Star, User } from "lucide-react";
 import { GithubIcon as Github } from "@/components/icons";
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 interface GitHubProfile {
   login: string;
@@ -30,20 +30,20 @@ export default function GithubSection() {
   const [profile, setProfile] = useState<GitHubProfile | null>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [commitsCount, setCommitsCount] = useState<number | null>(null);
-  const [loading, setLoading] = useState(() => !!portfolioConfig.githubUsername);
+  const [loading, setLoading] = useState(() => !!siteConfig.githubUsername);
   const [error, setError] = useState<"no-username" | "rate-limit" | null>(() => 
-    portfolioConfig.githubUsername ? null : "no-username"
+    siteConfig.githubUsername ? null : "no-username"
   );
 
   useEffect(() => {
-    const username = portfolioConfig.githubUsername;
+    const username = siteConfig.githubUsername;
     if (!username) return;
 
     const fetchGitHubData = async () => {
       try {
         const headers: HeadersInit = {};
-        if (portfolioConfig.githubToken) {
-          headers["Authorization"] = `token ${portfolioConfig.githubToken}`;
+        if (siteConfig.githubToken) {
+          headers["Authorization"] = `token ${siteConfig.githubToken}`;
         }
 
         const [profileRes, reposRes] = await Promise.all([
@@ -66,8 +66,8 @@ export default function GithubSection() {
         const profileData = await profileRes.json();
         const reposData = await reposRes.json();
 
-        // Fetch commits count of the portfolio website repository
-        const repoName = portfolioConfig.githubRepoName || "Website";
+        // Fetch commits count of the website repository
+        const repoName = siteConfig.githubRepoName || "Website";
         let commitsCountVal: number | null = null;
         try {
           const commitsRes = await fetch(
@@ -132,14 +132,14 @@ export default function GithubSection() {
             </h4>
             <p className="text-gray-400 leading-relaxed text-xs">
               {error === "no-username"
-                ? "Configure your GitHub username in the portfolio settings to pull active repositories and statistics."
+                ? "Configure your GitHub username in the settings to pull active repositories and statistics."
                 : "The public GitHub rate limit was reached or your network is offline. Your repository count and cards will render once sync completes."}
             </p>
           </div>
 
           <div className="inline-block py-1.5 px-3 rounded bg-black/40 border border-white/[0.04] text-[10px] text-gray-500">
             {error === "no-username" 
-              ? "Edit: src/config/portfolio.ts -> githubUsername"
+              ? "Edit: src/config/site.ts -> githubUsername"
               : "Retrying connection on next viewport entry."}
           </div>
         </motion.div>

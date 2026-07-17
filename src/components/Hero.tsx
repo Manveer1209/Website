@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
-  const titles = portfolioConfig.titles;
+  const titles = siteConfig.titles;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,7 +53,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-white text-5xl md:text-8xl font-black tracking-tighter mb-6 relative select-text"
         >
-          {portfolioConfig.name}
+          {siteConfig.name}
         </motion.h1>
 
         {/* Title Cycling Area */}

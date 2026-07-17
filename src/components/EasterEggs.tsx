@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal, ShieldCheck, X } from "lucide-react";
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 export default function EasterEggs() {
   const [activeEgg, setActiveEgg] = useState<"sudo" | "neofetch" | null>(null);
@@ -81,7 +81,7 @@ export default function EasterEggs() {
 
               <div className="space-y-4 text-xs md:text-sm leading-relaxed text-gray-300">
                 <div className="flex items-center gap-1.5 text-white font-bold select-none">
-                  <span className="text-violet-400">manveer@portfolio:~$</span>
+                  <span className="text-violet-400">manveer@arch:~$</span>
                   <span>sudo hire me</span>
                 </div>
 
@@ -94,7 +94,7 @@ export default function EasterEggs() {
                   <div>
                     <div className="font-bold text-violet-400 mb-1">Permission granted.</div>
                     <p className="text-[11px] md:text-xs text-gray-300 leading-normal">
-                      Welcome, superuser. Authentication successful. Keshav Uppal&apos;s coordinates are available. Feel free to contact him at <a href={`mailto:${portfolioConfig.contact.email}`} className="text-violet-400 underline hover:text-violet-300 interactive-cursor">{portfolioConfig.contact.email}</a>.
+                      Welcome, superuser. Authentication successful. Keshav Uppal&apos;s coordinates are available. Feel free to contact him at <a href={`mailto:${siteConfig.contact.email}`} className="text-violet-400 underline hover:text-violet-300 interactive-cursor">{siteConfig.contact.email}</a>.
                     </p>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ export default function EasterEggs() {
                 </pre>
 
                 <div className="space-y-1.5 flex-1 w-full">
-                  <div className="text-violet-400 font-bold text-sm">manveer@portfolio-egg</div>
+                  <div className="text-violet-400 font-bold text-sm">manveer@arch-egg</div>
                   <div className="text-gray-600 select-none">----------------------</div>
                   <div><span className="text-violet-400 font-semibold">OS</span>: Arch Linux x86_64</div>
                   <div><span className="text-violet-400 font-semibold">Host</span>: Brain Power Core V2</div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 export default function TerminalCard({
   onTriggerNeofetch,
@@ -17,7 +17,7 @@ export default function TerminalCard({
   const [currentMode, setCurrentMode] = useState<"whoami" | "neofetch" | "clear">("whoami");
   const [isTyping, setIsTyping] = useState(false);
 
-  const data = portfolioConfig.about;
+  const data = siteConfig.about;
 
   // Typing effect for commands
   const typeCommand = useCallback((cmd: string, onDone: () => void) => {
@@ -142,7 +142,7 @@ export default function TerminalCard({
             <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
             <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
           </div>
-          <span className="text-gray-500 text-[10px]">manveer@portfolio: ~</span>
+          <span className="text-gray-500 text-[10px]">manveer@arch: ~</span>
           <div className="w-10" /> {/* empty spacer */}
         </div>
 
@@ -151,7 +151,7 @@ export default function TerminalCard({
           <div>
             {/* Input Line */}
             <div className="flex items-center mb-4 text-white">
-              <span className="text-violet-400 mr-2">manveer@portfolio:~$</span>
+              <span className="text-violet-400 mr-2">manveer@arch:~$</span>
               <span>{commandText}</span>
               {isTyping && <span className="terminal-cursor" />}
             </div>
@@ -232,10 +232,10 @@ export default function TerminalCard({
 /_/  \\__/  \\_\\`}
                   </pre>
                   <div className="space-y-1">
-                    <div className="text-violet-400 font-bold text-sm">manveer@portfolio</div>
+                    <div className="text-violet-400 font-bold text-sm">manveer@arch</div>
                     <div className="text-gray-600">-----------------</div>
                     <div><span className="text-violet-400 font-semibold">OS</span>: Arch Linux x86_64</div>
-                    <div><span className="text-violet-400 font-semibold">Host</span>: Portfolio Website v2.0</div>
+                    <div><span className="text-violet-400 font-semibold">Host</span>: Personal Website v2.0</div>
                     <div><span className="text-violet-400 font-semibold">Kernel</span>: Next.js App Router</div>
                     <div><span className="text-violet-400 font-semibold">Uptime</span>: Always Learning</div>
                     <div><span className="text-violet-400 font-semibold">Shell</span>: Framer Motion v11</div>
@@ -265,7 +265,7 @@ export default function TerminalCard({
           {/* Bottom active prompt line */}
           {showOutput && !isTyping && (
             <div className="flex items-center mt-6 text-white pt-4 border-t border-white/[0.03]">
-              <span className="text-violet-400 mr-2">manveer@portfolio:~$</span>
+              <span className="text-violet-400 mr-2">manveer@arch:~$</span>
               <span className="terminal-cursor" />
             </div>
           )}

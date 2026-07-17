@@ -4,10 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Copy, Mail, Check } from "lucide-react";
 import { LinkedinIcon as Linkedin, DiscordIcon as Discord } from "@/components/icons";
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 export default function ContactSection() {
-  const contact = portfolioConfig.contact;
+  const contact = siteConfig.contact;
   const [copiedDiscord, setCopiedDiscord] = useState(false);
   const [showToast, setShowToast] = useState(false);
 

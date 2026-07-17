@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Award, ExternalLink } from "lucide-react";
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 export default function CertificationsSection() {
-  const certs = portfolioConfig.certifications;
+  const certs = siteConfig.certifications;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl mx-auto font-mono">

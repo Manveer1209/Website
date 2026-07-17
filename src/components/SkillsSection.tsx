@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 export default function SkillsSection() {
-  const skills = portfolioConfig.skills;
+  const skills = siteConfig.skills;
 
   const categories = [
     { title: "Languages", items: skills.languages },

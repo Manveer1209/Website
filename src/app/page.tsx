@@ -22,7 +22,7 @@ export default function Home() {
     // Defer state updates to avoid synchronous cascading renders during hydration
     const timer = setTimeout(() => {
       setMounted(true);
-      const hasBooted = sessionStorage.getItem("portfolio_booted");
+      const hasBooted = sessionStorage.getItem("site_booted");
       if (hasBooted === "true") {
         setIsBooting(false);
       }

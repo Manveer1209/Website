@@ -11,10 +11,10 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Keshav Uppal | Portfolio",
+    default: "Keshav Uppal",
     template: "%s | Keshav Uppal",
   },
-  description: "A modern, premium, OLED-black portfolio inspired by Linux system customization, dotfiles, and clean engineering.",
+  description: "A modern, premium, OLED-black website inspired by Linux system customization, dotfiles, and clean engineering.",
   keywords: [
     "Keshav Uppal",
     "Linux Enthusiast",
@@ -34,22 +34,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://manveer.dev",
-    title: "Keshav Uppal | Portfolio",
-    description: "A modern, premium, OLED-black portfolio inspired by Linux system customization, dotfiles, and clean engineering.",
-    siteName: "Keshav Uppal Portfolio",
+    title: "Keshav Uppal",
+    description: "A modern, premium, OLED-black website inspired by Linux system customization, dotfiles, and clean engineering.",
+    siteName: "Keshav Uppal Website",
     images: [
       {
         url: "/og-image.png", // Placeholder path
         width: 1200,
         height: 630,
-        alt: "Keshav Uppal | Portfolio",
+        alt: "Keshav Uppal Website",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Keshav Uppal | Portfolio",
-    description: "A modern, premium, OLED-black portfolio inspired by Linux system customization, dotfiles, and clean engineering.",
+    title: "Keshav Uppal",
+    description: "A modern, premium, OLED-black website inspired by Linux system customization, dotfiles, and clean engineering.",
     images: ["/og-image.png"],
   },
   robots: {

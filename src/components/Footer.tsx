@@ -1,6 +1,6 @@
 "use client";
 
-import { portfolioConfig } from "@/config/portfolio";
+import { siteConfig } from "@/config/site";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,7 +12,7 @@ export default function Footer() {
           Built with passion, powered by curiosity.
         </p>
         <p className="text-center sm:text-right text-gray-600 select-text">
-          &copy; {currentYear} {portfolioConfig.name}. All rights reserved.
+          &copy; {currentYear} {siteConfig.name}. All rights reserved.
         </p>
       </div>
     </footer>

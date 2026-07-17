@@ -1,4 +1,4 @@
-export const portfolioConfig = {
+export const siteConfig = {
   name: "Keshav Uppal",
   role: "Student",
   titles: [
@@ -25,16 +25,14 @@ export const portfolioConfig = {
       "Photography",
       "Tech Events"
     ],
-    currentlyLearning: [
-      "Git"
-    ],
+    currentlyLearning: [],
     status: "Always learning."
   },
   skills: {
     languages: ["Python"],
     operatingSystems: ["Arch Linux", "Windows"],
-    currentlyLearning: ["Git"],
-    interests: ["Linux Ricing", "Open Source", "Photography", "System Customization"]
+    currentlyLearning: [],
+    interests: ["Linux Ricing", "Graphic Designing", "Photography", "System Customization"]
   },
   projects: [
     {
