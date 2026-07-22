@@ -25,7 +25,7 @@ export const siteConfig = {
       "Photography",
       "Graphic Designing",
     ],
-    currentlyLearning: [],
+    currentlyLearning: ["JEE Preparation"],
     status: "Always learning."
   },
   skills: {
