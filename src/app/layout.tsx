@@ -1,7 +1,10 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
+
+
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -96,6 +99,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
       </head>
       <body className="min-h-full flex flex-col bg-[#000000] text-white overflow-x-hidden selection:bg-violet-500/30 selection:text-white">
         <CustomCursor />
