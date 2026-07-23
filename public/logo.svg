@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <style>
+      .glyph {
+        stroke: #ffffff;
+        stroke-width: 76px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+      .accent {
+        stroke: #8B5CF6;
+        stroke-width: 66px;
+        stroke-linecap: round;
+        fill: none;
+      }
+      @media (max-width: 64px) {
+        .signature {
+          display: none;
+        }
+      }
+    </style>
+  </defs>
+  
+  <!-- Stem of the lowercase k -->
+  <path class="glyph" d="M 181 96 L 181 416" />
+  
+  <!-- Diagonals of the lowercase k -->
+  <path class="glyph" d="M 291 206 L 221 276 L 331 416" />
+  
+  <!-- Cursor _ (Hides at small sizes) -->
+  <path class="accent signature" d="M 405 416 L 475 416" />
+</svg>
