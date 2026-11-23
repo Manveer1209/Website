@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     "Arch Linux Ricing",
     "System Customization",
     "Python",
+    "SQL",
     "Open Source",
   ],
   authors: [{ name: "Keshav Uppal" }],

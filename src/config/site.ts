@@ -38,9 +38,9 @@ export const siteConfig = {
     status: "Always learning."
   },
   skills: {
-    languages: ["Python"],
+    languages: ["Python", "SQL"],
     operatingSystems: ["Arch Linux", "Windows"],
-    currentlyLearning: [],
+    currentlyLearning: ["JEE Preparation"],
     interests: ["Linux Ricing", "Graphic Designing", "Photography", "System Customization"]
   },
   projects: [] as ProjectItem[],
