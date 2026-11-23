@@ -1,3 +1,12 @@
+export interface ProjectItem {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  techStack: string[];
+  githubUrl: string;
+}
+
 export const siteConfig = {
   name: "Keshav Uppal",
   role: "Student",
@@ -34,16 +43,7 @@ export const siteConfig = {
     currentlyLearning: [],
     interests: ["Linux Ricing", "Graphic Designing", "Photography", "System Customization"]
   },
-  projects: [
-    {
-      id: "arch-rice",
-      title: "Arch Rice",
-      description: "A personalized Arch Linux rice with custom dotfiles, configurations, scripts, and workflow improvements focused on productivity and aesthetics.",
-      status: "In Development",
-      techStack: ["Hyprland/Bspwm", "Lua", "Bash", "Rofi", "Waybar"],
-      githubUrl: "https://github.com/Manveer1209/arch-rice-dotfiles" // Placeholder or actual link
-    }
-  ],
+  projects: [] as ProjectItem[],
   certifications: [
     {
       id: "kryptix-26",

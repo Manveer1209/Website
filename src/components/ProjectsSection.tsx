@@ -8,6 +8,17 @@ import { siteConfig } from "@/config/site";
 export default function ProjectsSection() {
   const projects = siteConfig.projects;
 
+  if (projects.length === 0) {
+    return (
+      <div className="w-full max-w-3xl mx-auto font-mono text-center py-12 px-4 border border-white/[0.06] bg-white/[0.01] rounded-lg">
+        <p className="text-gray-400 text-xs md:text-sm">No featured projects right now.</p>
+        <p className="text-gray-600 text-[11px] md:text-xs mt-1.5">
+          Currently exploring new ideas — check back soon or explore repositories below.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full max-w-3xl mx-auto space-y-8 font-mono">
       <div className="grid grid-cols-1 gap-8">
